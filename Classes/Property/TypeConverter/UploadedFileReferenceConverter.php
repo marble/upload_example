@@ -194,7 +194,7 @@ class UploadedFileReferenceConverter extends AbstractTypeConverter {
 		$uploadFolder = $this->resourceFactory->retrieveFileOrFolderObject($uploadFolderId);
 		$uploadedFile =  $uploadFolder->addUploadedFile($uploadInfo, $conflictMode);
 
-		$resourcePointer = isset($uploadInfo['submittedFile']['resourcePointer']) && strpos($uploadInfo['submittedFile']['resourcePointer'], 'file:') === FALSE
+		$resourcePointer = isset($uploadInfo['submittedFile']['resourcePointer']) && strpos($uploadInfo['submittedFile']['resourcePointer'], 'file:') !== FALSE
 				? $this->hashService->validateAndStripHmac($uploadInfo['submittedFile']['resourcePointer'])
 				: NULL;
 
